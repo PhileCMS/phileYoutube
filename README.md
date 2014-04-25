@@ -9,11 +9,20 @@ A plugin that generates Youtube videos based on IDs. It can be used in your them
 * use in templates with Twig
 * auto grab the title
 
-### Installation
+### 1.1 Installation (composer)
+```
+php composer.phar require phile/youtube:*
+```
+### 1.2 Installation (Download)
 
 * Install [Phile](https://github.com/PhileCMS/Phile)
-* Clone this repo into `plugins/phileYoutube`
-* add `$config['plugins']['phileYoutube'] = array('active' => true);` to your `config.php`
+* Clone this repo into `plugins/phile/youtube`
+
+### 2. Activation
+
+After you have installed the plugin. You need to add the following line to your `config.php` file:
+
+* add `$config['plugins']['phile\\youtube'] = array('active' => true);` to your `config.php`
 
 ### Markdown Usage
 
