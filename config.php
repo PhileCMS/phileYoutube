@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * config file
+ */
 return array(
 	'wrapper_class' => 'youtube-video', // parent class for iframe
 	'title_class' => 'youtube-title', // div clas for video title

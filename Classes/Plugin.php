@@ -1,19 +1,29 @@
 <?php
+/**
+ * Plugin class
+ */
+namespace Phile\Plugin\Phile\Youtube;
 
 /**
  * Render a youtube video based on it's ID
  * Usage: {{ youtube(id) }}
  * Usage: youtube=id
  */
-
-class PhileYoutube extends \Phile\Plugin\AbstractPlugin implements \Phile\EventObserverInterface {
+class Plugin extends \Phile\Plugin\AbstractPlugin implements \Phile\Gateway\EventObserverInterface {
+	/**
+	 * the consructor
+	 */
 	public function __construct() {
 		\Phile\Event::registerEvent('template_engine_registered', $this);
 		\Phile\Event::registerEvent('after_parse_content', $this);
 	}
 
-	public function get_video($id)
-	{
+	/**
+	 * @param $id
+	 *
+	 * @return string
+	 */
+	public function get_video($id) {
 		$title = "";
 		if ($this->settings['show_title']) {
 			// returns a single line of XML that contains the video title.
@@ -30,9 +40,16 @@ class PhileYoutube extends \Phile\Plugin\AbstractPlugin implements \Phile\EventO
 		return "<div class=\"{$this->settings['wrapper_class']}\"><iframe width=\"{$this->settings['video_width']}\" height=\"{$this->settings['video_height']}\" src=\"//www.youtube.com/embed/{$id}?rel=0\" frameborder=\"0\" allowfullscreen></iframe>{$title}</div>";
 	}
 
+	/**
+	 * event method
+	 * @param string $eventKey
+	 * @param null   $data
+	 *
+	 * @return mixed|void
+	 */
 	public function on($eventKey, $data = null) {
 		if ($eventKey == 'template_engine_registered') {
-			$youtube = new Twig_SimpleFunction('youtube', function ($id) {
+			$youtube = new \Twig_SimpleFunction('youtube', function ($id) {
 				return $this->get_video($id);
 			});
 			$data['engine']->addFunction($youtube);
