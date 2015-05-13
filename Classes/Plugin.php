@@ -37,7 +37,7 @@ class Plugin extends \Phile\Plugin\AbstractPlugin implements \Phile\Gateway\Even
 			}
 			$title = "<div class=\"{$this->settings['title_class']}\">{$tags[0]}{$titleOfVideo[1]}{$tags[1]}</div>";
 		}
-		return "<div class=\"{$this->settings['wrapper_class']}\"><iframe width=\"{$this->settings['video_width']}\" height=\"{$this->settings['video_height']}\" src=\"//www.youtube.com/embed/{$id}?rel=0\" frameborder=\"0\" allowfullscreen></iframe>{$title}</div>";
+		return "<div class=\"{$this->settings['wrapper_class']}\"><iframe width=\"{$this->settings['video_width']}\" height=\"{$this->settings['video_height']}\" src=\"//www.youtube.com/embed/{$id}&rel=0\" frameborder=\"0\" allowfullscreen></iframe>{$title}</div>";
 	}
 
 	/**
