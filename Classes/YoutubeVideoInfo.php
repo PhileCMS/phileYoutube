@@ -54,6 +54,16 @@ class YoutubeVideoInfo {
             return;
         }
 
+        /** @var \Phile\ServiceLocator\CacheInterface $cache */
+        $cache = null;
+        if (ServiceLocator::hasService('Phile_Cache')) {
+            $cache = ServiceLocator::getService('Phile_Cache');
+        }
+        $cacheKey = 'plugin.phile.youtube.' . md5($this->id);
+        if ($cache && $cache->has($cacheKey)) {
+            return $cache->get($cacheKey);
+        }
+
         $url = 'http://www.youtube.com/oembed';
         $parts = [
           'url' => 'http://www.youtube.com/watch',
@@ -72,6 +82,9 @@ class YoutubeVideoInfo {
 
         if (!$video) {
             $video = [];
+        }
+        if ($cache) {
+            $cache->set($cacheKey, $video);
         }
         $this->info = $video;
         return $this->info;
