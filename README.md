@@ -35,6 +35,12 @@ Put the code in there. Watch the HTML spew out.
 ```html
 youtube=8GLMe371RuI
 ```
+Make sure you left a break line before and after the code if your video is not showing up
+
+You can add a start point in seconds too like this
+```html
+youtube=8GLMe371RuI?start=60
+```
 
 Output:
 
