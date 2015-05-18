@@ -1,7 +1,6 @@
 {
 	"name": "phile/youtube",
 	"type": "phile-plugin",
-    "version": "1.0.0",
     "license": "MIT",
     "description": "A plugin that generates Youtube videos based on IDs. It can be used in your theme, or in your Markdown.",
     "homepage": "http://philecms.com",
